@@ -33,16 +33,16 @@ will fail eval issues designed around that family.
 ## Checks
 
 | Check | Evidence | Pass condition | Weight |
-|||||
-| Maintainer Alive | comment thread, issue body | A maintainer has commented on, labelled, or authored the issue within the last 30 days. | required |
 |---|---|---|---|
-| Repo in Use | repo-facts block | The repository's last default-branch commit date is within the past 30 days. | required |
+| Maintainer Alive | Comment thread, issue body | A maintainer has commented on, labelled, or authored the issue within the last 30 days. | required |
 |---|---|---|---|
-| Newcomer Scope | issue body, comment thread | The issue describes a specific, localized bug or isolated feature rather than a broad architectural rewrite. | required |
+| Repo in Use | Repo-facts block | The repository's last default-branch commit date is within the past 30 days. | required |
 |---|---|---|---|
-| Unclaimed Status | comment thread, issue body | The issue has no assignee, no linked open PR, and no active claim by a maintainer. Per Path Review house rules, other students' claim comments do not block the issue. | required |
+| Newcomer Scope | Issue body, comment thread | The issue describes a specific, localized bug or isolated feature rather than a broad architectural rewrite. | required |
 |---|---|---|---|
-| Technical Fit | issue body | The issue aligns with the Python, Streamlit, or ChromaDB skillsets outlined in the fit profile. | preferred |
+| Unclaimed Status | Comment thread, issue body | The issue has no assignee, no linked open PR, and no active claim by a maintainer. Per Path Review house rules, other students' claim comments do not block the issue. | required |
+|---|---|---|---|
+| Technical Fit | Issue body | The issue aligns with the Python, Streamlit, or ChromaDB skillsets outlined in the fit profile. | preferred |
 |---|---|---|---|
 
 ## Verdict rule
