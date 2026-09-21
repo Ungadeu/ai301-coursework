@@ -47,6 +47,8 @@ will fail eval issues designed around that family.
 
 ## Verdict rule
 
+Accept the issue if every required check passes. The preferred checks do not alter the final verdict and are solely used to rank the accepted issues. Any unclear result on a required check is treated as a fail.
+
 <!-- State how the grades above combine into accept or reject, and how
 unclear is treated. Example shape (write your own): "accept if every
 required check passes; preferred checks never change the verdict, they
