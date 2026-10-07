@@ -1,0 +1,25 @@
+Hi! Here is my plan for fixing this issue:
+
+**What I found (Diagnosis):**
+Based on the reproduction (`QT_QPA_PLATFORM=offscreen .venv/bin/python check_previews.py` on `d2f302c` printed `NO PREVIEW` for 8 of the 12 Basic rules), the root cause is in `zxlive/rewrite_action.py` within `RewriteAction.from_rewrite_data()`. That function only sets `picture_path` when the rule's data has a `"picture"` file or `"custom_rule"`, and those 8 entries in `rules_basic` have neither, so the tooltip falls back to plain text.
+
+One thing I checked: the GIFs in `zxlive/tooltips/` are not the missing previews. They're multi-frame demo clips, and `QPixmap.load()` only reads frame 0, which shows the old sidebar and the graph *before* the rewrite.
+
+**What I'll do (Scope & Approach):**
+
+- Generate the previews in code instead of adding images. `tooltip` can already render a `lhs` = `rhs` picture from two graphs (the `'custom'` path used by custom rules).
+  - New `zxlive/rule_previews.py`: a tiny example graph for each of Remove identity, Fuse spiders, Remove self-loops, Remove parallel edges, Colour change and Decompose Hadamard. Each `rhs` is made by applying the real pyzx rule to the example, so the picture always matches what the rule does.
+  - Unfuse spider reuses the fuse example in reverse, since `UnfusionRewrite.apply()` is interactive.
+  - `rewrite_data.py` attaches these as `lhs`/`rhs` on `rules_basic`.
+  - Update `RewriteAction.from_rewrite_data()` in `zxlive/rewrite_action.py` with one branch: `lhs`/`rhs` present and no `"picture"` → `picture_path = 'custom'`. I won't set `custom_rule`, so `is_custom_rule` stays `False`.
+- Add a regression test in `test/test_rule_previews.py`. It checks that each of the 7 rules' tooltip has an `<img>`, and that each generated `rhs` is tensor-equal to its `lhs` (`pyzx.compare_tensors`).
+- Out of scope: I will not modify any external APIs, CLI flags, or unrelated files. That includes the existing image assets, the look of the `'custom'` renderer, other rule groups, and "Save changed positions", which isn't a graph rewrite, so it stays text-only.
+
+**How I'll prove it (Test Plan):**
+
+- Re-run the reproduction steps (`QT_QPA_PLATFORM=offscreen .venv/bin/python check_previews.py`). The output currently shows 8 `NO PREVIEW` lines, and after the fix will show `PREVIEW` for 11 of 12 rules, with only `NO PREVIEW  Save changed positions` left.
+- Run `pytest` on `test/test_rule_previews.py` to ensure all tests pass, plus `pytest test/`, `mypy zxlive`, `ruff check` and `complexipy . --max-complexity-allowed 15` as in CI.
+
+**Before I start:** I prototyped this locally and the pictures look right, but they're in the app's own graph style rather than your hand-drawn PNGs. Are generated previews OK for these rules, or would you rather have PNGs to match the existing ones?
+
+*(Note: Prepared with AI assistance via Claude Code.)*

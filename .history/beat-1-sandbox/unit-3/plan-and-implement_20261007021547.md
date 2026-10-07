@@ -42,7 +42,7 @@ eval/issues/issue-04.md
 
 [Your Unit 2 reproduction steps re-run against the built change: the before, then the
 after. Paste both, including the commands you ran and their output.]
-git checkout -b fix/<ISSUE_NUMBER>-<short-slug>
+
 ## Eval iterations
 
 Answer all four sections. Quote source text directly; paraphrase does not satisfy these
@@ -76,7 +76,7 @@ favour of it.]
 result it changes, a canary you re-ran with `--only`, a case you accept it will miss, or a
 stated reason nothing changed elsewhere. "Nothing changed, and here is how I know" earns
 the point in full when the reason follows.]
-Requiring diagnosis-grounded to verify that the root cause is directly supported by repro_evidence means that if an issue has a sparse reproduction report where the root cause can only be inferred by reading source files not quoted in the reproduction, my rubric will grade the check unclear (and therefore reject). I verified this behavior by checking my results across the wrong-cause and clear-accepts categories in eval-run.txt, confirming that tightening this check caught the wrong-cause packages without falsely rejecting valid scoped plans.
+Nothing changed, and here is how I know, the environemtn was properly set and no other error's resulted.
 ---
 
 Related paths: `plan.md` and `eval-run.txt` in this directory; your skill's files in

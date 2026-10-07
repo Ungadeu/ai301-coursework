@@ -37,12 +37,12 @@ what this field is graded on, so copy across what you actually posted.]
 naming shape is a type prefix, then the issue number, then a short description. **The issue
 number in the branch name must be the number of the issue you claimed** — a name carrying
 any other number does not satisfy this field.]
-eval/issues/issue-04.md
+
 **Evidence**
 
 [Your Unit 2 reproduction steps re-run against the built change: the before, then the
 after. Paste both, including the commands you ran and their output.]
-git checkout -b fix/<ISSUE_NUMBER>-<short-slug>
+
 ## Eval iterations
 
 Answer all four sections. Quote source text directly; paraphrase does not satisfy these
@@ -53,17 +53,13 @@ fields.
 [The agreement score of each run you did, in order. A single run is a complete answer if
 only one run occurred. **The last score in your list must match the agreement line in the
 `eval-run.txt` you committed** — that file is the record of your final run.]
-Scoreboard:
 
-Agreement: 19/20, which clears the 18/20 bar.
-Categories: each one has at least one match: clear-accept 6/7, scope-creep 4/4, thread-convention 2/2, unbuildable 3/3, wrong-cause 4/4.
-The one miss: pkg-14 is labelled accept, but your skill rejected it because it failed executable-by-a-stranger.
 **Package analysis**
 
 [Pick one scored package (`pkg-01` through `pkg-20` — the four `calib-` packages are never
 scored). Name it by id, say what your rubric decided and what the gold label said, and
 explain why your rubric read it that way.]
-pkg-03  clear-accept  accept  accept   yes
+
 **Check rationale**
 
 [Quote one check from the `rubric.md` you uploaded to `tools/plan-check/`, exactly as it reads now.
@@ -76,7 +72,7 @@ favour of it.]
 result it changes, a canary you re-ran with `--only`, a case you accept it will miss, or a
 stated reason nothing changed elsewhere. "Nothing changed, and here is how I know" earns
 the point in full when the reason follows.]
-Requiring diagnosis-grounded to verify that the root cause is directly supported by repro_evidence means that if an issue has a sparse reproduction report where the root cause can only be inferred by reading source files not quoted in the reproduction, my rubric will grade the check unclear (and therefore reject). I verified this behavior by checking my results across the wrong-cause and clear-accepts categories in eval-run.txt, confirming that tightening this check caught the wrong-cause packages without falsely rejecting valid scoped plans.
+
 ---
 
 Related paths: `plan.md` and `eval-run.txt` in this directory; your skill's files in

@@ -42,7 +42,7 @@ eval/issues/issue-04.md
 
 [Your Unit 2 reproduction steps re-run against the built change: the before, then the
 after. Paste both, including the commands you ran and their output.]
-git checkout -b fix/<ISSUE_NUMBER>-<short-slug>
+
 ## Eval iterations
 
 Answer all four sections. Quote source text directly; paraphrase does not satisfy these
