@@ -15,7 +15,7 @@ wrong label is not graded.
 
 ### Issue link
 
-<https://github.com/codepath/ai301-unit1-starter/blob/main/eval/issues/issue-04.md>
+(https://github.com/codepath/pathreview-ai301-fa26-s1/issues/11)
 
 <!-- TODO — REQUIRES A LIVE PATH REVIEW ISSUE. Paste the URL of the individual issue
 page in `codepath/pathreview-ai301-fa26-s1`. An eval bundle path such as
@@ -88,7 +88,7 @@ rubric, returning the same 20/20 and the same per-category breakdown.
 
 **Issue analysis**
 
-`issue-04` — my rubric returned **accept**; the gold label is **accept**. They agree.
+`issue-11` — my rubric returned **accept**; the gold label is **accept**. They agree.
 
 The gold entry records the issue as `zxcalc/zxlive#555`, category `clear-accept`, with
 the note:
@@ -97,23 +97,12 @@ the note:
 
 My rubric reached accept because all five `required` checks passed:
 
-- **Maintainer Alive** — "5/5 most recent default-branch commits dated 2026-08-04, 1 day
-  before the 2026-08-05 capture date, authored by humans (RazinShaikh, 96-LB)"
-- **Repo in Use** — "archived: no; last push to any branch 2026-08-04, within 90 days of
-  capture date 2026-08-05"
-- **Newcomer Scope** — "Body lists 'remove identity, fuse spiders, remove self loops' — a
-  bounded set of small preview items in one feature area, not an umbrella/tracking issue;
-  0 comments; labeled 'good first issue', 'Category: Proof mode'"
-- **Unclaimed Status** — "assignees: none; linked PRs: none; 0 comments"
-- **Contribution Policy** — "contribution policy: 'no statement on AI or contribution
-  tooling'"
-
-The one failing check was **Technical Fit**: "zxlive is a Python/PyQt GUI tool for
-ZX-calculus proof rules, not a Streamlit or ChromaDB project." Technical Fit is weighted
-`preferred`, and my verdict rule states that "the preferred checks do not alter the final
-verdict and are solely used to rank the accepted issues," so the failure was recorded but
-did not flip the result. This is the case that proves the weighting works: it is the only
-scored issue where a check failed and the verdict still came out accept.
+- **Maintainer Alive** — "The newest commit is from 2026-09-16 by Aburke225, a person, not a bot. That is 27 days ago, inside the 90-day window."
+- **Repo in Use** — "The repo is not archived and was last pushed on 2026-09-16, within 90 days. It has no releases, which is fine because the push date alone satisfies the check."
+- **Newcomer Scope** — "It asks for one bounded thing: a new section in docs/ARCHITECTURE.md, estimated at 2–3 hours. It has 4 labels, including good first issue, has 0 comments, and was opened by a collaborator. It is not an umbrella issue."
+- **Unclaimed Status** — "No one is assigned, there are no comments, and no open or closed PR mentions #11. Two PRs matched my keyword search by accident (#111 and #89), and neither is about this issue."
+- **Contribution Policy** — "docs/CONTRIBUTING.md and the PR template say nothing about AI-assisted work, and your rubric counts silence as a pass."
+- **Technical Fit**: "It's a docs task about hybrid retrieval scoring in the RAG pipeline. That matches your RAG and ChromaDB experience and your preference for backend work over front-end." 
 
 **Check rationale**
 
