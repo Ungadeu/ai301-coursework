@@ -1,4 +1,4 @@
-# Implementation Plan — Issue #555 (zxcalc/zxlive, eval issue-04)
+# Implementation Plan — Issue #555 (zxcalc/zxlive, eval issue-11)
 
 Issue: "Missing several basic rule previews" — "Including remove identity, fuse
 spiders, remove self loops, etc." (opened by RazinShaikh, COLLABORATOR, 2026-08-04;
