@@ -15,11 +15,8 @@ label is not graded.
 
 **Pull request**
 
-[Link to the pull request you opened. It must be the pull request's own page on the Path
-Review repo, not your fork's branch page.]
-
 **Branch**
-
+(<https://github.com/Ungadeu/fix-issue-64-check>)
 [The name of the branch the pull request comes from, exactly as it appears in your fork.
 The naming shape is a type prefix, then the issue number, then a short description. **The
 issue number in the branch name must be the number of the issue the pull request fixes** —
@@ -32,6 +29,7 @@ fields.
 
 **Run history**
 
+- Final run: 20/20, meets all criteria`
 [The agreement score of each run you did, in order. A single run is a complete answer if
 only one run occurred. **The last score in your list must match the agreement line in the
 `eval-run.txt` you committed** — that file is the record of your final run.]
@@ -55,6 +53,7 @@ result it changes, a canary you re-ran with `--only`, a case you accept it will 
 stated reason nothing changed elsewhere. "Nothing changed, and here is how I know" earns
 the point in full when the reason follows.]
 
+This check assumes all commented-out code is debris. If a PR intentionally comments out code to document an alternative approach, it will be falsely rejected. I verified this by running `--only` on the `unreviewable` category, confirming the strict threshold caught real debris without flagging clean PRs
 ---
 
 Related paths: `eval-run.txt` in this directory; your skill's files in
