@@ -55,10 +55,11 @@ happened; these entries are the toolkit's own timeline.
 All four entries are graded. Keep every heading below, and fill each
 one in the week it belongs to.
 
-**Unit 5: [one line on the tool work]**
-
-[2-4 sentences: what you built (the scout, your strategy), what broke
-or fell short, what changed because of it.]
+### Unit 5: issue-scout
+- **Tool:** `issue-scout`
+- **What it produced:** A ranked list of 5 open-source issues via CLI search, plus 2 graded picks from the AI301 Issue Selection site.
+- **What fought me:** The initial search returned too many abandoned issues with no recent maintainer activity.
+- **What I changed:** I updated my `search-strategy.md` to add a rule that ranks recently updated issues first (`--sort updated`) to ensure the maintainers are active.
 
 **Unit 6: [one line on the tool work]**
 
