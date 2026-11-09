@@ -33,13 +33,4 @@ and claiming later is how two strangers do the same work twice.
 
 ## Your fit profile
 
-<!-- Paste this forward from your sandbox scope.md, and update it:
-it now does more work. Besides ranking the issues your rubric
-accepts, it steers WHERE the scout searches: your search-strategy.md
-queries should each trace to a sentence here, so name the languages,
-tools, and project areas you actually want to work in, and anything
-you want to avoid. It still never changes a verdict: fit cannot
-rescue an issue your rubric rejects, and cannot sink one it
-accepts. -->
-
 "I am an AI engineering student experienced in Python backend logic, flask_sqlalchemy database models, unit testing with Pytest, and data deduplication. I prefer small, well-defined bug fixes and testing tasks over heavy front-end UI design."

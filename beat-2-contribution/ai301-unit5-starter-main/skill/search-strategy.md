@@ -31,36 +31,14 @@ A filled strategy must contain:
 
 ## Queries
 
-<!-- Real gh search invocations, one per line, each with a comment
-naming the fit-profile sentence it came from. Example SHAPE (write
-your own; these values belong to nobody):
-
-gh search issues --label "good first issue" --language python --state open --limit 100 --json title,repository,labels,assignees,commentsCount,updatedAt,url
--->
 gh search issues "pytest" --label "good first issue" --language python --state open --limit 100
 gh search issues "sqlalchemy" --label bug --language python --state open --limit 100
 
 ## Ranking filters
 
-<!-- Conditions and orderings over the free result fields, applied in
-the order written. State each so a stranger could apply it and get
-your ordering. Example SHAPES (write your own):
-
-- drop any result with an assignee
-- drop any result not updated in the last 60 days
-- prefer fewer comments over more
--->
 Sort by: recently updated first (`--sort updated`).
 Drop any issues that already have an assignee.
 
 ## How many to grade
 
 Grade the top **5** ranked results per scan.
-
-<!-- Five is the default because grading is the only stage that costs
-money: about $0.20 per candidate, so a scan is about $1, and you can
-iterate the strategy several times for less than one full regression
-run. You need one good issue, not ten. Raising this number is
-allowed, but it is a decision you state here in a sentence, with the
-cost you are accepting; it is not a number you bump because a scan
-disappointed you once. -->
