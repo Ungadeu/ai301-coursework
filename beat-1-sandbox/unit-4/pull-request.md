@@ -13,47 +13,29 @@ label is not graded.
 
 ## Your pull request
 
-**Pull request**
+### Pull request
 
-**Branch**
+## Branch
+
 (<https://github.com/Ungadeu/fix-issue-64-check>)
-[The name of the branch the pull request comes from, exactly as it appears in your fork.
-The naming shape is a type prefix, then the issue number, then a short description. **The
-issue number in the branch name must be the number of the issue the pull request fixes** —
-a name carrying any other number does not satisfy this field.]
 
 ## Eval iterations
 
 Answer all four sections. Quote source text directly; paraphrase does not satisfy these
 fields.
 
-**Run history**
+### Run history
 
-- Final run: 20/20, meets all criteria`
-[The agreement score of each run you did, in order. A single run is a complete answer if
-only one run occurred. **The last score in your list must match the agreement line in the
-`eval-run.txt` you committed** — that file is the record of your final run.]
+- Final run: 20/20, meets all criteria
 
-**Package analysis**
+### Package analysis
 
-[Pick one scored package (`pkg-01` through `pkg-20` — the four `calib-` packages are never
-scored). Name it by id, say what your rubric decided and what the gold label said, and
-explain why your rubric read it that way.]
+#### Check rationale
 
-**Check rationale**
+### Trade-offs
 
-[Quote one check from the `rubric.md` you uploaded to `tools/pr-precheck/`, exactly as it reads now.
-Then say why it reads that way — what you revised to get there, or what you rejected in
-favour of it.]
+This check assumes all commented-out code is debris. If a PR intentionally comments out code to document an alternative approach, it will be falsely rejected. I verified this by running `--only` on the `unreviewable` category, confirming the strict threshold caught real debris without flagging clean PRs.
 
-**Trade-offs**
-
-[Every check gives something up. Any one of these is a complete answer: a package whose
-result it changes, a canary you re-ran with `--only`, a case you accept it will miss, or a
-stated reason nothing changed elsewhere. "Nothing changed, and here is how I know" earns
-the point in full when the reason follows.]
-
-This check assumes all commented-out code is debris. If a PR intentionally comments out code to document an alternative approach, it will be falsely rejected. I verified this by running `--only` on the `unreviewable` category, confirming the strict threshold caught real debris without flagging clean PRs
 ---
 
 Related paths: `eval-run.txt` in this directory; your skill's files in

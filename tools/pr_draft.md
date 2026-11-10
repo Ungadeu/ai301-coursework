@@ -81,4 +81,6 @@ N/A: backend change with no UI.
   revert it to keep the diff smaller.
 - `JOURNAL.md` and `docs/PLAN.md` are course artifacts on this branch.
 
-*(Note: Prepared with AI assistance via Claude Code.)*
+### Note
+
+Prepared with AI assistance via Claude Code.

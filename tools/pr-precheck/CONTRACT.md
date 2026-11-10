@@ -71,16 +71,14 @@ The tool's reply ends with a fenced JSON block, and nothing follows
 it. The schema is fixed and may not be altered, extended, or
 reordered:
 
-```json
-{
-  "item": "<PR URL or bundle id>",
-  "checks": [
-    {"name": "<check name>", "grade": "pass|fail|unclear",
-     "evidence": "<one line: the fact or quote that decided it>"}
-  ],
-  "verdict": "accept|reject"
-}
-```
+    {
+      "item": "<PR URL or bundle id>",
+      "checks": [
+        {"name": "<check name>", "grade": "pass|fail|unclear",
+         "evidence": "<one line: the fact or quote that decided it>"}
+      ],
+      "verdict": "accept|reject"
+    }
 
 The harness parses the last fenced JSON block in the output. A
 readable per-check summary may come before the block; the block is the
