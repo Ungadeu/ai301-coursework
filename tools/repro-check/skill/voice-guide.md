@@ -1,47 +1,42 @@
 # Voice guide: how I talk upstream
 
-<!--
-THIS IS THE PART YOU WRITE (new this week). Live mode reads this file
-before any comment of yours goes out the door; eval mode ignores it
-entirely, because your voice is yours and carries no gold labels.
-
-This is not etiquette. "Be polite and concise" is advice for everyone
-and therefore rules for no one. Write rules YOU need, in your own
-words, each one concrete enough that the skill can hold a draft
-against it and say which rule it breaks.
-
-Three sections. Fill all three.
--->
-* **Be polite and objective:** Speak like a professional engineer.
-* **Do not overpromise:** Use phrases like "I will investigate this" instead of "I will fix this by tomorrow."
-* **Be clear and formatting-rich:** Use Markdown code blocks for error logs and bullet points for environment steps so it is easy for others to read.
+- **Be polite, concise, and objective:** Communicate like a collaborative engineer on a shared open-source thread.
+- **Promise only what is in the plan:** State clearly what root cause you traced, what bounded change you plan to make, and how you will test it. Do not promise timelines/dates or extra features not in `plan.md`.
+- **Engage maintainer context:** If a maintainer left guidance in the thread (such as keeping the existing API), explicitly align your proposed approach with their guidance.
+- **Follow repo disclosure conventions:** If the repository's policy requires disclosing AI tool usage, include a clear, honest disclosure line in the comment.
+- **Use clean formatting:** Use short paragraphs, bullet points, and inline code backticks (`filename.py`, `function_name()`) so maintainers can scan your plan in seconds.
 
 ## Who I am in threads
 
-<!-- 2-3 lines. Who is talking when you comment on an issue: your
-experience level stated plainly, what you are doing in this repo, what
-readers can expect from you. This is the register your rules protect. -->
+I am a Master's student and aspiring AI engineer contributing to open-source to build my software development experience. I aim to be a collaborative and transparent contributor, communicating objectively and ensuring my work respects repository standards and maintainer guidance. Readers can expect me to provide clear evidence for my findings and focus on bounded, well-tested fixes.
 
 ## Rules I write by
 
-<!-- 3-5 rules, drafted from the lecture's slide-12 moment. Each rule
-needs a wrong/right pair from your own hand: one line you might
-actually have written that breaks the rule, and the line you would
-post instead. The pair is what makes a rule executable; a rule without
-one is a wish.
+### Rule: Stick to the Plan (and No Timelines)
 
-Format each rule like this:
+I clearly state the traced root cause, the bounded change, and the test plan, without promising exact delivery dates or extra features outside the scope.
 
-### Rule: <short name>
+- Wrong: "I will fix this bug and also clean up the other functions in the file by tomorrow afternoon."
+- Right: "I plan to update `clean_text()` to handle the unhandled edge case. I will not modify the surrounding helper functions."
 
-<The rule, one or two sentences.>
+### Rule: Respect Maintainer Guidance
 
-- Wrong: "<a line that breaks it>"
-- Right: "<the line to post instead>"
--->
+If a maintainer leaves instructions or constraints (like preserving an API or avoiding a specific module), I explicitly acknowledge and align my approach with their guidance.
+
+- Wrong: "I decided to rewrite the API to make it more efficient."
+- Right: "Per your note about keeping the existing API, my plan only modifies the internal validation logic and leaves the function signature unchanged."
+
+### Rule: Transparent AI Disclosure
+
+I always include a clear, honest disclosure line in my comments if the repository policy requires stating AI tool usage.
+
+- Wrong: "I figured out this fix on my own."
+- Right: "*(Note: Prepared with AI assistance via Claude Code.)*"
 
 ## Things I never post
 
-<!-- A short list. Promises you cannot keep, tones you refuse,
-shortcuts you know you reach for when tired. The skill quotes this
-list back at you when a draft crosses it. -->
+- Exact delivery dates, timelines, or guarantees (e.g., "I'll have the PR up in 2 hours").
+- Promises to fix unrelated issues or perform "while I'm at it" refactoring.
+- Guesses or assumptions about a bug's root cause without direct reproduction evidence to back it up.
+- Piggybacked reproductions (e.g., "Same as above, can confirm") without showing my own terminal output.
+- Comments that hide or obscure the use of AI coding assistants when repository policies require disclosure.
