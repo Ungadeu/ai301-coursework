@@ -56,23 +56,35 @@ All four entries are graded. Keep every heading below, and fill each
 one in the week it belongs to.
 
 ### Unit 5: issue-scout
+
 - **Tool:** `issue-scout`
 - **What it produced:** A ranked list of 5 open-source issues via CLI search, plus 2 graded picks from the AI301 Issue Selection site.
 - **What fought me:** The initial search returned too many abandoned issues with no recent maintainer activity.
 - **What I changed:** I updated my `search-strategy.md` to add a rule that ranks recently updated issues first (`--sort updated`) to ensure the maintainers are active.
 
-**Unit 6: [one line on the tool work]**
+### Unit 6: Why I Chose This Issue
 
-[2-4 sentences: the voice-guard, the repo-memory file. What broke or
-fell short, and what changed because of it. "Nothing broke" counts when
-it is true - say how you know.]
+I sourced this issue from the AI301 Issue Selection site using filters for Python and backend tags. My `issue-scout` tool graded it as `accept` with a `moderate` difficulty note. I chose this issue because it directly aligns with my experience in Python backend logic and unit testing, and it offers a great opportunity to learn more about how this specific repository structures its test coverage. While my scout successfully flagged the technical match, I noticed it struggled to evaluate the exact time commitment required, which is something I will have to gauge manually. 
+**Claim comment link:** `<Paste the URL to your GitHub claim comment here>`
 
-**Unit 7: [one line on the tool work]**
+- **Tool:** `issue-scout`
+- **What it produced:** A grading verdict of `accept` with a `moderate` difficulty note, confirming the technical feasibility of the issue.
+- **What fought me:** The original rubric was too strict and rejected real-world issues because their scopes weren't perfectly tidy.
+- **What I changed:** I patched `rubric.md` by replacing the old scope check with the `scope-feasible` row to handle messier open-source issues.
+
+### Unit 6: voice-guard and repo memory
+
+- **Tool:** `voice-guard` and `CLAUDE.local.md`
+- **What it produced:** An automated hook that blocks unprofessional or overpromising GitHub comments, and a memory file that teaches Claude the repository's structure.
+- **What fought me:** Configuring the voice guard hook took some troubleshooting to ensure it properly intercepted my terminal commands without blocking safe actions.
+- **What I changed:** I successfully wired the `PreToolUse` hook in my `settings.json` and added an Upstream section to my voice guide to strictly enforce claim comment rules.
+
+### Unit 7: [one line on the tool work]
 
 [2-4 sentences: the ship-gate and your gate manifest. What it produced
 on your real branch, what fought you, what changed because of it.]
 
-**Unit 8: [one line on the tool work]**
+### Unit 8: [one line on the tool work]
 
 [2-4 sentences: the PR-monitor and your playbook. What it read, what it
 drafted, what you did with the draft.]

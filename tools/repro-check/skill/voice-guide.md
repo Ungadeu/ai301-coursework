@@ -40,3 +40,32 @@ I always include a clear, honest disclosure line in my comments if the repositor
 - Guesses or assumptions about a bug's root cause without direct reproduction evidence to back it up.
 - Piggybacked reproductions (e.g., "Same as above, can confirm") without showing my own terminal output.
 - Comments that hide or obscure the use of AI coding assistants when repository policies require disclosure.
+
+## Upstream
+
+### Claims
+
+#### Rule: Promise a first step, not a finish line
+
+I will state what I am going to investigate first, without promising a final delivery date.
+
+- Wrong: "I'll take this and have a fix up in a day or two."
+- Right: "I'd like to take this. First step: reproducing the bug on macOS against main; I'll report what I find here."
+
+### Questions
+
+#### Rule: Show your work before asking
+
+I will explain what I have already tried before asking the maintainer a question.
+
+- Wrong: "How do I run the tests?"
+- Right: "I tried running `pytest` as mentioned in CONTRIBUTING.md, but I'm getting a path error. Is there a specific environment flag I need to set?"
+
+### Pings
+
+#### Rule: Respect the maintainer's clock
+
+I will politely ask for a review only after waiting a reasonable amount of time, without sounding impatient.
+
+- Wrong: "Bump. Any update on this?"
+- Right: "Hi! Just checking in to see if there is anything else you need from me on this PR when you have a moment to review."
