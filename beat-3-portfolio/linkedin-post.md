@@ -1,5 +1,5 @@
 
-I recently built an automated pull request inspection tool and used it to secure a prompt injection vulnerability in an open-source Python repository. Managing messy real-world code taught me that development tools need to be flexible, not just strict.
+I recently built an automated pull request inspection tool and used it to secure a prompt injection vulnerability in an open-source Python repository. Managing messy real-world code taught me that development tools need to be flexible, not strict.
 
 Initially, my automated inspector was too rigid, rejecting viable tasks because their scopes weren't perfectly tidy. By patching the tool's logic to evaluate feasibility rather than perfection, I made it robust enough to handle the unpredictability of open-source development. I then used this tool to audit my own security patch, catching formatting errors and unused variables before they could clutter the maintainer's review queue.
 
