@@ -7,12 +7,11 @@ the repository is not read. **Keep every section header below under its exact na
 format criteria grade exactly that. Your course repo link is the whole submission: no tool
 files and no evidence uploads are part of Assignment 5.
 
-**Contribution Number:** [1]
-**Student:** [Student name]
-**GitHub Username:** [your GitHub username, exactly as it appears on your profile - no @, no
-profile URL. Your comments upstream are identified by this name.]
-**Issue:** [GitHub issue link]
-**Pull Request:** [GitHub PR link, once opened]
+**Contribution Number:** 1
+**Student:** Uriel Ngadeu
+**GitHub Username:** Ungadeu
+**Issue:** [GitHub issue link — fill in during Part 2]
+**Pull Request:** [GitHub PR link — fill in during Part 3]
 
 One repository, built across units 5 to 8, telling the whole story of your real
 contribution. Fill it as you work, not at the end — the sections below ask for evidence that
@@ -57,20 +56,10 @@ one in the week it belongs to.
 
 ### Unit 5: issue-scout
 
-- **Tool:** `issue-scout`
+- **Tool:** Upgraded issue-select into issue-scout and tuned CLI search filters
 - **What it produced:** A ranked list of 5 open-source issues via CLI search, plus 2 graded picks from the AI301 Issue Selection site.
 - **What fought me:** The initial search returned too many abandoned issues with no recent maintainer activity.
-- **What I changed:** I updated my `search-strategy.md` to add a rule that ranks recently updated issues first (`--sort updated`) to ensure the maintainers are active.
-
-### Unit 6: Why I Chose This Issue
-
-I sourced this issue from the AI301 Issue Selection site using filters for Python and backend tags. My `issue-scout` tool graded it as `accept` with a `moderate` difficulty note. I chose this issue because it directly aligns with my experience in Python backend logic and unit testing, and it offers a great opportunity to learn more about how this specific repository structures its test coverage. While my scout successfully flagged the technical match, I noticed it struggled to evaluate the exact time commitment required, which is something I will have to gauge manually. 
-**Claim comment link:** `<Paste the URL to your GitHub claim comment here>`
-
-- **Tool:** `issue-scout`
-- **What it produced:** A grading verdict of `accept` with a `moderate` difficulty note, confirming the technical feasibility of the issue.
-- **What fought me:** The original rubric was too strict and rejected real-world issues because their scopes weren't perfectly tidy.
-- **What I changed:** I patched `rubric.md` by replacing the old scope check with the `scope-feasible` row to handle messier open-source issues.
+- **What I changed:** I installed `issue-scout` over my Unit 1 `issue-select` skill, copied my Python/backend fit profile into `scope.md`, and wrote `search-strategy.md` with open-issue `gh search issues` queries (`--state open --limit 100`) and ranking filters to scan 5 live issues and grade **[2 or 3]** picks from the AI301 Issue Selection site. During my first scan on **[Date from scan-notes.md]**, **[name one real thing that broke or fell short — e.g., "my initial query returned stale issues with no maintainer replies in over a year / a repo like `<repo-name>` failed my Maintainer Alive check because..."]**. Because of that, I **[state your real change — e.g., "added `--sort updated` and an unassigned filter in `search-strategy.md`, then logged the change in `scan-notes.md` so the top 5 results surfaced active Python repos"]**.
 
 ### Unit 6: voice-guard and repo memory
 
@@ -93,16 +82,7 @@ drafted, what you did with the draft.]
 
 ## Why I Chose This Issue
 
-[1-2 paragraphs in your own words: how you searched, what your scan
-surfaced, what your scout's verdict said, why this issue fits your
-profile, and what you hope to learn. If your scout's verdict on it
-was reject and you chose it anyway, say so here and say why; choosing
-against your own tool silently is what loses points. Close with an
-honest read of the tool itself: where the scout fell short on a real
-wild search and what you changed or would change, or what convinced
-you it held up. **Record the link to your claim comment in this section too.**
-Not claimed yet? Write `claim pending` and today's date where the link goes,
-and add the link the moment your claim lands.]
+I sourced this issue from the AI301 Issue Selection site using filters for Python and backend tags. My `issue-scout` tool graded it as `accept` with a `moderate` difficulty note. I chose this issue because it directly aligns with my experience in Python backend logic and unit testing, and it offers a great opportunity to learn more about how this specific repository structures its test coverage. While my scout successfully flagged the technical match, I noticed it struggled to evaluate the exact time commitment required, which is something I will have to gauge manually.
 
 **Toolkit**
 
