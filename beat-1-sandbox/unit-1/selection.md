@@ -2,56 +2,29 @@
 
 Path: `beat-1-sandbox/unit-1/selection.md`
 
-Record of the issue carried into Unit 2, and of the evaluation runs that produced
-`eval-run.txt`. This file is graded at the path above; a copy kept anywhere else in
-the repository is not read.
-
-Complete every labelled field below. Each is graded on its own; content placed under the
-wrong label is not graded.
-
 ---
 
 ## Selected issue
 
 ### Issue link
 
-(https://github.com/codepath/pathreview-ai301-fa26-s1/issues/11)
-
-<!-- TODO — REQUIRES A LIVE PATH REVIEW ISSUE. Paste the URL of the individual issue
-page in `codepath/pathreview-ai301-fa26-s1`. An eval bundle path such as
-`eval/issues/issue-04.md` does not satisfy this field: the eval set is third-party
-GitHub used to tune the rubric, `scope.md` restricts live candidates to the Path
-Review repo, and Unit 2 requires an issue you can actually claim. -->
+[https://github.com/codepath/pathreview-ai301-fa26-s1/issues/11](https://github.com/codepath/pathreview-ai301-fa26-s1/issues/11)
 
 ### Verdict output
 
-<!-- TODO — REQUIRES THE LIVE-MODE RUN ON THE ISSUE LINKED ABOVE. This field wants the
-skill's live-mode output verbatim, ending with the fenced JSON block whose "item" is
-the issue URL. Eval-mode output from `run_eval.py` does not satisfy it. -->
 
-**The verdict must record `accept` for this issue.** Choose an issue your own skill
-accepts. If your skill rejects every candidate you try, that is a signal about your
-rubric rather than about the issues: revise it and re-run — retries are unlimited and a
-partial re-run costs about $0.20 — or run the skill on different candidates. Output
-recording `reject` for the issue you chose earns no credit for this field.
-
-```json
-[
 {
-    "item": "https://github.com/codepath/ai301-unit1-starter/blob/main/eval/issues/issue-04.md",
-    "checks": [
-      {"name": "Maintainer Alive", "grade": "pass", "evidence": "All 5 most recent default-branch commits dated 2026-08-04, one day before the 2026-08-05 capture, by human authors RazinShaikh and 96-LB"},
-      {"name": "Repo in Use", "grade": "pass", "evidence": "archived: no; last push to any branch 2026-08-04, within 90 days of capture; release v1.0.0 on 2026-04-29"},
-      {"name": "Newcomer Scope", "grade": "pass", "evidence": "'remove identity, fuse spiders, remove self loops' is a short enumerated list of small concrete items in one feature area - one bounded deliverable, not an umbrella; 0 comments; labels 'Type: bug', 'good first issue', 'Category: Proof mode' present"},
-      {"name": "Unclaimed Status", "grade": "pass", "evidence": "assignees: none; linked PRs: none; 0 comments"},
-      {"name": "Contribution Policy", "grade": "pass", "evidence": "contribution policy (CONTRIBUTING.md): 'no statement on AI or contribution tooling' - silence passes"},
-      {"name": "Technical Fit", "grade": "pass", "evidence": "zxlive is a Python/PyQt codebase, aligning with the Python skillset, though the work is GUI-facing which the profile prefers to avoid"}
-    ],
-    "verdict": "accept"
-  }
-  ]
-```
-
+  "item": "https://github.com/codepath/pathreview-ai301-fa26-s1/issues/11",
+  "checks": [
+    {"name": "Maintainer Alive", "grade": "pass", "evidence": "Latest default-branch commit 2026-09-16 by human Aburke225, 27 days before today (within 90)"},
+    {"name": "Repo in Use", "grade": "pass", "evidence": "archived: false; last push 2026-09-16, within 90 days (no releases)"},
+    {"name": "Newcomer Scope", "grade": "pass", "evidence": "Single bounded docs task in docs/ARCHITECTURE.md, est. 2-3 hours; labels good first issue/docs/rag/tier-1; 0 comments; opener is COLLABORATOR"},
+    {"name": "Unclaimed Status", "grade": "pass", "evidence": "No assignees, no comments, no open or closed PR references #11"},
+    {"name": "Contribution Policy", "grade": "pass", "evidence": "docs/CONTRIBUTING.md and PR template contain no statement on AI-assisted contributions (silence passes)"},
+    {"name": "Technical Fit", "grade": "pass", "evidence": "Documents hybrid vector+keyword retrieval scoring, matching RAG/ChromaDB experience; no front-end work"}
+  ],
+  "verdict": "accept"
+}
 ---
 
 ## Eval iterations
@@ -198,15 +171,26 @@ This is also the basis for the claim comment you write in Unit 2.
 
 **Selection rationale**
 
-<!-- TODO — REQUIRES THE LIVE PATH REVIEW ISSUE CHOSEN ABOVE. Answer all three in your
-own words, about that issue:
+Fit to my interests and time available: Issue #11 asks for a bounded documentation
+section in docs/ARCHITECTURE.md explaining hybrid vector-and-keyword retrieval
+scoring in the RAG pipeline, estimated at 2–3 hours. That directly matches my fit
+profile in scope.md—I have hands-on experience with Python, RAG pipelines, and
+ChromaDB, prefer backend/data topics over front-end UI work, and want more practice
+with collaborative Git workflows on a clear, scoped first contribution.
 
-1. The issue's fit to your interests and to the time available. Your fit profile in
-   scope.md names Python, Git, Streamlit, ChromaDB and RAG pipelines, wanting to improve
-   at unit tests and collaborative Git workflows, and preferring backend/data work over
-   front-end UI — tie the answer to that.
-2. What the verdict identified correctly, and what you weighed that the rubric could not.
-3. The anticipated difficulty in claiming it. -->
+What the verdict identified correctly vs. what I weighed manually: The rubric
+correctly verified that the repo is actively maintained (recent human commit by
+Aburke225), unclaimed (no assignees, comments, or linked PRs), bounded to a single
+file, and aligned with my RAG background. What the rubric could not weigh is how much
+code reading across the retrieval modules will be required to make sure the
+architecture explanation accurately reflects the current implementation rather than
+high-level guesses, as well as the fact that a pure documentation task gives me less
+hands-on unit-testing practice than a code bug would.
+
+Anticipated difficulty in claiming it: Low. The issue has zero comments, no
+assignees, and no open PRs referencing it, so claiming it cleanly should be
+straightforward as long as I verify the retrieval source code first so my claim
+comment shows I understand the relevant files before starting.
 
 ---
 
