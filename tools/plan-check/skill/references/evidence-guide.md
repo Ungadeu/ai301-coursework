@@ -1,29 +1,11 @@
 # Evidence guide: where evidence lives in a plan package
 
-<!--
-THIS IS THE PART YOU WRITE (second week running: the judgment files
-stay in your hands). The skill uses this guide as its map: for every
-kind of evidence a rubric check names, this file says WHERE to find it
-in a plan package and WHAT GOOD LOOKS LIKE when you do.
+## Evidence sources (canonical names)
 
-Under each family heading below, write:
+- `plan`: `plan.md` in live mode; `## Plan` in an eval package.
+- `repro_evidence`: quoted repro output in `plan.md` and the issue thread in live mode; `## Repro evidence` (and `## Issue` / `## Thread`) in an eval package.
+- `plan_comment`: `comment.md` in live mode; `## Draft comment` in an eval package.
 
-- Where it lives: the exact places to look. In an eval bundle (which
-  section of the package: the issue context, the repro-evidence block,
-  the candidate plan's scope statement or test plan, the plan comment,
-  the repo-facts block). In live mode (where on GitHub or in the
-  draft: the issue thread, the student's posted repro comment, the
-  repo's docs, the draft plan and comment).
-- What good looks like: one or two sentences someone else could apply.
-  Prefer observable conditions ("the stated cause cites behavior the
-  repro evidence actually shows") over adjectives ("diagnosis is
-  solid").
-
-A rubric check whose evidence this guide cannot locate is a check
-nobody else can execute, and this week that cuts twice: your
-procedure.md tells the skill WHEN to gather each family, and this
-guide tells it WHERE. Write the map you wish your executor had.
--->
 ## 1. Issue & Maintainer Thread (`issue`, `comment_thread`)
 
 - **Where it lives (Eval mode):** Under the `## Issue` and `## Comment thread` (or `### Comments`) headings in the package markdown file.

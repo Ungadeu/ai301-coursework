@@ -1,21 +1,11 @@
 # Scope: where your issue lives, and the rules of the room
 
-<!--
-This file is the skill's field of view, live mode only: in eval mode
-the bundle is the whole world and this file is ignored. The rubric
-(rubric.md) decides whether a package is READY; the scope decides which
-issues a package may belong to at all, and what the house rules are
-where that issue lives.
-
-Staff wrote this file. It ships filled; you do not edit it this week.
--->
-
 ## Where your issue lives
 
 Only issues in the course's Path Review repository are in scope this
 week:
 
-- Repo: `ai301-unit1-starter/eval/issues/issue-04.md` <!-- paste your section's repo from the Unit 1 Assignment tab -->
+- Repo: `codepath/pathreview-ai301-fa26-s1`
 
 If the repo line above still reads as a bracketed placeholder, your
 cohort's copy has not been finalized: stop and ask your instructor for

@@ -1,5 +1,5 @@
 ---
-name: skill
+name: repro-check
 description: Grade a reproduction package (a claim comment plus a repro report against its issue) and decide whether it is ready to post upstream. Use when checking a draft claim or repro comment before posting, or when grading an eval package bundle.
 ---
 
