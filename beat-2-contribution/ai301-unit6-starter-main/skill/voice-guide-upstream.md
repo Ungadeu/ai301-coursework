@@ -1,72 +1,44 @@
 # Voice guide, the upstream section: how I talk to maintainers
 
-<!--
-THIS IS THE PART YOU WRITE (the unit-6 hole). Append everything below
-this comment to YOUR voice guide, then fill it. Your guide has held
-your outgoing words to your own rules since unit 2; this section aims
-those rules at the wild, where the readers are maintainer strangers
-who owe you nothing and your house rules do not travel.
-
-Same format as unit 2, on purpose: each rule needs a wrong/right pair
-from your own hand. One line you might actually have written that
-breaks the rule, and the line you would post instead. The pair is
-what makes a rule executable; a rule without one is a wish. "Be
-polite" is advice for everyone and therefore a rule for no one.
-
-Three subsections. Fill all three: your claims, your questions, your
-pings each leave your keyboard under your name. Once your rules are
-written, delete these instruction comments: the guide of record
-carries rules, not scaffolding.
--->
-
 ## Upstream: how I talk to maintainers
 
 ### Claims I post
 
-<!-- 1-2 rules. What your claim promises and how it sounds: intent,
-a concrete first step, a realistic timeframe, in your register. Think
-about what you refuse to do too: claiming over a stranger, squatting
-silently, promising dates you cannot keep.
+#### Rule: Promise only what is in the plan
 
-#### Rule: <short name>
+State clearly what root cause you traced, what bounded change you plan to make, and how you will test it. Do not promise timelines/dates or extra features not in `plan.md`.
 
-<The rule, one or two sentences.>
+- Wrong: "I'll claim this and have a full fix plus some cleanup up by tomorrow afternoon."
+- Right: "I'd like to take this on. My first step is reproducing the bug locally and tracing the root cause, and I'll report back with my findings once confirmed."
 
-- Wrong: "<a line that breaks it>"
-- Right: "<the line to post instead>"
--->
+#### Rule: Engage maintainer context
+
+If a maintainer left guidance in the thread (such as keeping the existing API), explicitly align your proposed approach with their guidance.
+
+- Wrong: "I'm going to claim this and rewrite the API to make it cleaner."
+- Right: "I'd like to work on this. Per your earlier note about keeping the existing API, I will focus my investigation on the internal logic without changing the function signature."
 
 ### Questions I ask
 
-<!-- 1-2 rules. What a question of yours must carry before it goes
-up: answerable from the maintainer's chair, what you already tried,
-one question rather than five. -->
+#### Rule: Show what I tried and ask one clear question
+
+Before asking a maintainer anything, I state what I already checked or ran (with relevant file names or function names in backticks) and ask one specific question they can answer quickly from their chair, instead of dumping a list of five questions at once.
+
+- Wrong: "I'm stuck on this issue. How does the parser work, which file should I edit, and how do I run the tests?"
+- Right: "I traced the parsing error to `parse_config()` in `config.py` and verified it fails under `pytest tests/test_config.py`. Should empty keys raise a `ValueError` here, or fall back to the default dict?"
+
+#### Rule: Keep questions scannable and grounded in repo context
+
+I keep questions short, objective, and aligned with existing docs or prior maintainer comments so the maintainer does not have to repeat guidance that is already in the thread.
+
+- Wrong: "I read through a bunch of files and wasn't totally sure what you meant earlier about keeping backwards compatibility, could you explain the whole design?"
+- Right: "Per your note on preserving backwards compatibility for `load_items()`, would adding an optional `strict=False` parameter fit the API, or would you prefer an internal-only fix?"
 
 ### Pings I send
 
-<!-- 1 rule is enough. When you nudge and how it sounds: measured
-against the repo's own reply rhythm, never your clock, and never
-pressure dressed as politeness. -->
+#### Rule: Match the repo's reply rhythm with zero pressure
 
-<!--
-NO UNIT 2 GUIDE? The frame carries you. Write ALL the sections fresh
-in your canonical guide, today: first the three unit 2 sections
-listed below, then the Upstream section above. Write every rule as
-plain text, outside these comment blocks. It is more writing, and it is
-entirely doable; ask a TF if you want a second pair of eyes on your
-first rules.
+I only follow up after waiting longer than the repository's normal response pace—never based on my own deadline—and I keep the note brief, polite, and free of guilt or urgency.
 
-The unit-2 frame, so you do not need the old materials open:
-
-  ## Who I am in threads
-    2-3 lines. Who is talking when you comment: your experience level
-    stated plainly, what you are doing in this repo, what readers can
-    expect from you.
-
-  ## Rules I write by
-    3-5 rules, wrong/right pair each, same format as above.
-
-  ## Things I never post
-    A short list. Promises you cannot keep, tones you refuse,
-    shortcuts you know you reach for when tired.
--->
+- Wrong: "Hi, just bumping this! I need this reviewed by Friday for my schedule—any chance you can look at it today?"
+- Right: "Hi—checking in on this when you have a moment. No rush at all; please let me know if any part of the approach or tests needs adjustment."
