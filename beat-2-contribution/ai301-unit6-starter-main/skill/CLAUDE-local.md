@@ -1,5 +1,5 @@
 
-# My notes on [repo] (local, never committed)
+# My notes on EdgeTX/edgetx (local, never committed)
 
 Repo: `EdgeTX/edgetx` (fork `Ungadeu/edgetx` cloned to `~/Desktop/edgetx`, `EdgeTX/edgetx` set as `upstream`) | Issue: `#1067` | Written: 2026-11-22
 

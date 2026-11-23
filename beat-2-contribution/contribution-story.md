@@ -38,10 +38,7 @@ one in the week it belongs to.
 
 ### Unit 5: Upgraded issue-select into issue-scout and tuned CLI search filters
 
-- **Tool:** Upgraded issue-select into issue-scout and tuned CLI search filters
-- **What it produced:** A ranked list of 5 open-source issues via CLI search, plus 2 graded picks from the AI301 Issue Selection site.
-- **What fought me:** The initial search returned too many abandoned issues with no recent maintainer activity.
-- **What I changed:** I installed `issue-scout` over my Unit 1 `issue-select` skill, copied my Python/backend fit profile into `scope.md`, and wrote `search-strategy.md` with open-issue `gh search issues` queries (`--state open --limit 100`) and ranking filters to scan 5 live issues and grade **[2 or 3]** picks from the AI301 Issue Selection site. During my first scan on **[Date from scan-notes.md]**, **[name one real thing that broke or fell short — e.g., "my initial query returned stale issues with no maintainer replies in over a year / a repo like `<repo-name>` failed my Maintainer Alive check because..."]**. Because of that, I **[state your real change — e.g., "added `--sort updated` and an unassigned filter in `search-strategy.md`, then logged the change in `scan-notes.md` so the top 5 results surfaced active Python repos"]**.
+I installed `issue-scout` over my Unit 1 `issue-select` skill, copied my fit profile into `scope.md`, and wrote `search-strategy.md` with open-issue `gh search issues` queries (`--state open --limit 100`, sorted with `--sort updated` and dropping anything not updated in 60 days) to scan 5 live issues and grade 2 picks (`EdgeTX/edgetx#1067` and `catalyst-cooperative/pudl#3125`) from the AI301 Issue Selection site. During my first scan on 2026-11-08, the scout accepted 3 of the 5 scanned issues, but none was safe to take. My old `Newcomer Scope` check rejected workable real-world issues just for being messy, and `pudl#3125`, already closed as fixed in `#3737`, was rejected only because `Unclaimed Status` happened to catch it, since my rubric had no "issue is still open" check. Because of that, I replaced `Newcomer Scope` with a `scope-feasible` check, reworded `Unclaimed Status` for real repos on 2026-11-11 so any recent active claim blocks a pick, and logged both changes in `scan-notes.md`.
 
 ### Unit 6: Installed voice-guard hook, wild scopes, and repo memory file
 
@@ -51,10 +48,9 @@ I installed `voice-guard` into `~/.claude/voice-guard/`, merged an `## Upstream`
 
 I installed the ship-gate (`python3 skill/install.py --repo ~/Desktop/edgetx`), which swapped pr-precheck to the scope for real repos. I filled `ship-manifest.md` with three checks from EdgeTX's CI: `gtests-radio` (the `tests-radio` target `build_fw.yml` runs through `tools/commit-tests.sh`), `check_radio_macros.py`, and `check_includes.py`. I moved `commit-tests.sh` and the hw_defs validator to the excluded table with dated reasons: a fresh configure can't find my pip-installed cmake, libc++ wrapper, or SDL2, and the validator fails at import on a missing `typing_extensions`. I expected my Unit 4 rubric might demand Path Review's `make` checks, but its `test-evidence-present` row was already repo-agnostic ("if the repo asks for its suite or checks to pass"), so it passed EdgeTX's C++ evidence unchanged. What actually fought me came in two parts. First, my first hand run of `check_gate.py` stopped on `standards-wall`, because @gagarinlg had answered "Probably both" on #1067 after I drafted, and my `Fixes #1067` claimed the whole issue while my description treated the picker filter as an either/or alternative. Second, opening the PR from a Claude session started in my course folder was stopped because the hook checks the session's start folder, not my clone. Because of that, I re-scoped the PR to "part of #1067", amended my commit message so merging won't auto-close the issue, and recorded the split in `plan.md` (plan-check went from reject back to accept). Then `check_gate.py` printed `ship-gate: PASS`, and I opened PR #8112 from a session inside `~/Desktop/edgetx`, where the hook honored that manual pass.
 
-### Unit 8: [one line on the tool work]
+### Unit 8: Installed pr-monitor and wrote an EdgeTX review playbook
 
-[2-4 sentences: the PR-monitor and your playbook. What it read, what it
-drafted, what you did with the draft.]
+I installed `pr-monitor` into `~/.claude/pr-monitor/` and wrote `playbook.md` with response rules, EdgeTX staleness thresholds measured from five recent merged outside-contributor PRs, single-nudge etiquette aligned with my Unit 6 voice guide, and walk-away criteria. Running `monitor.py` on branch `fix/1067-default-curves-linear` read PR `#8112`'s live state (`<e.g., QUIET, under a day since opening, checks status>`) and drafted `<e.g., a wait note citing my X-day threshold / a review reply>`, so I `<e.g., kept the wait note off the GitHub thread rather than nudging early / rewrote the reply in my-reply.md and posted it through voice-guard>`. `<Name "Initially "Nothing --state EdgeTX/edgetx" I NEW NOTHING OR a all and at broke: confirmed confused drafted-move.md." fell for fork four free gh my or playbook pointed repo returned run second sections set-default short touching until verified what without you—e.g.,>` Because of that, `<state what you changed, or "I left the playbook thresholds as written and will re-run the monitor when new activity lands on #8112">`.
 
 ---
 
@@ -133,7 +129,6 @@ An undefined custom curve has all-zero point values (`isCurveUsed()` returns `0`
 - **Repro comment:** pending (drafted in `repro-draft.md`, graded `accept` by repro-check, not yet posted)
 - **Screenshots/logs:**
 
-```text
 $ native/gtests-radio --gtest_filter='Repro1067Test.*'
 ############ Running 1 test(s) from 1 test case(s), iteration: 1.
 [----------] 1 test from Repro1067Test
@@ -147,18 +142,15 @@ $ native/gtests-radio --gtest_filter='Repro1067Test.*'
 +
 [==========] 1 test from 1 test suite ran (0 ms total)
 [  PASSED  ] 1 test.
-```
 
 - **My findings:** The bug reproduces on current `main`. The code path matches what I read before claiming: `applyCustomCurve()` in `radio/src/curves.cpp` sends a curve with all-zero points to `intpol()`, which returns 0, and `isCurveUsed()` already identifies such a curve as undefined. I reproduced it through the firmware's own unit-test harness rather than on a physical radio or the GUI simulator, and my report says so.
 
-### Toolkit
+### Toolkit: Reproduction
 
-```markdown
 - Tool: `repro-check` (my rubric, evidence guide, and the wild `scope.md`), run via `claude "repro-check: grade my claim comment in claim-draft.md and my repro report in repro-draft.md for issue https://github.com/EdgeTX/edgetx/issues/1067"`, with `voice-guard` checking both drafts first via `check_voice.py --draft`.
 - What it produced: `accept`, with all five required checks passing (Claim Intent, Environment Record, Followable Steps, Behavior Match, AI Disclosure).
 - Difficulties: Running it headless with `claude -p`, it couldn't approve `gh` calls or read `~/.claude/skills/`, so I re-ran it with `--add-dir` and read-only `gh` permissions. It caught a real flaw: my pasted output said `2 tests` while the command shown filtered to one, because I had run it with an extra `Curves.*` filter. It also warned that my claim was already posted, so posting `claim-draft.md` again would be a duplicate claim.
 - What changed: I re-ran the test with exactly the documented command and pasted that real output (`1 test`) into `repro-draft.md`, and I'm posting only the repro comment, not a second claim.
-````
 
 ---
 
@@ -179,12 +171,14 @@ Update `applyCustomCurve()` in `radio/src/curves.cpp` so that when `isCurveUsed(
 3. Add a focused unit test in `radio/src/tests/mixer.cpp` next to `TEST(Curves, LinearIntpol)` covering undefined curve passthrough and ensuring configured curves are unaffected.
 4. Rebuild and run `gtests-radio` (plus the repro test) to verify the before/after change and zero regressions.
 
+Deviation (recorded in `plan.md`): after `@gagarinlg` replied "Probably both" on `#1067`, I scoped PR `#8112` to "part of #1067", leaving the `CurveChoice` picker filter for a follow-up, and wrote the fixture-based check as a separate `TEST_F(MixerTest, ...)`.
+
 ### Toolkit
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: `plan-check` (my rubric, procedure, evidence guide, and the wild `scope.md`), run via `claude "plan-check: grade my plan in plan.md and draft comment in plan-comment.md for issue https://github.com/EdgeTX/edgetx/issues/1067"` with read-only `gh` permissions.
+- What it produced: `reject` first (no `plan.md`), then `accept` with all five required checks passing (diagnosis-grounded, bounded-scope, executable-by-a-stranger, test-decisive, comment-faithful) and the preferred risk-awareness check passing.
+- Difficulties: it caught real gaps in my plan. My repro test asserts `== 0`, so it would fail after the fix. My comment overstated "defined curves stay unchanged". It also found I'd missed a caller (`applyCurrentCurve()` at `curves.cpp:417`). It flagged procedure gaps too: my `procedure.md` and evidence guide look for `comment.md` instead of `plan-comment.md`, the evidence guide still mentions the Path Review repo and has empty template sections, and nothing says what to do when no repro comment is posted.
+- What changed: I wrote the expected repro failure into the test plan, added the flat-curve trade-off and the real test name to the comment, added the missing caller to Risks, and re-graded to `accept`. The skill-file gaps are still to fix.
 
 ---
 
@@ -217,12 +211,16 @@ I installed the ship-gate and wrote my plan. My first `plan-check` run on #1067 
 
 I created `fix/1067-default-curves-linear` from `main` (I confirmed it matched `upstream/main`) and re-ran my repro and the full suite before touching code, so the "before" numbers were fresh. The change is four lines in `applyCustomCurve()` in `radio/src/curves.cpp`: after the existing `idx >= MAX_CURVES` check, return `x` when `!isCurveUsed(idx)`. I added two tests next to `LinearIntpol` in `radio/src/tests/mixer.cpp`. Two decisions differed from the plan, and I recorded both in its Deviations section. The mixer-level check became its own `TEST_F(MixerTest, ...)`, because it needs the fixture. The commit scope became `fix(curves)` to match how EdgeTX scopes by subsystem. To prove the tests were real, I stashed only `curves.cpp` and confirmed both new tests fail without the fix. Then I moved `repro_1067.cpp` out of the source tree into the git-ignored `build/evidence/` so it can't land in the PR, and checked `git diff main...HEAD --stat` (only `curves.cpp` and `mixer.cpp`, 31 insertions). Commit: `803f2a7ef fix(curves): default undefined custom curves to linear Y = X`. The maintainer design question on the thread is still unanswered, so the branch is built but not pushed as a PR.
 
+**2026-11-23 (PR opened)**
+
+After `@gagarinlg` answered "Probably both" on `#1067`, I updated `plan.md` to scope this branch to the `Y = X` default only (`part of #1067` rather than `Fixes #1067`), amended the commit message so merging will not auto-close the issue, re-ran `plan-check` and `check_gate.py --branch` until `ship-gate: PASS`, pushed `fix/1067-default-curves-linear`, and opened PR `#8112` on `EdgeTX/edgetx` from inside `~/Desktop/edgetx`.
+
 **Toolkit**
 
-- Tool: `plan-check` (my rubric, procedure, evidence guide, and the wild `scope.md`), run via `claude "plan-check: grade my plan in plan.md and draft comment in plan-comment.md for issue https://github.com/EdgeTX/edgetx/issues/1067"` with read-only `gh` permissions.
-- What it produced: `reject` first (no `plan.md`), then `accept` with all five required checks passing (diagnosis-grounded, bounded-scope, executable-by-a-stranger, test-decisive, comment-faithful) and the preferred risk-awareness check passing.
-- Difficulties: it caught real gaps in my plan. My repro test asserts `== 0`, so it would fail after the fix. My comment overstated "defined curves stay unchanged". It also found I'd missed a caller (`applyCurrentCurve()` at `curves.cpp:417`). It flagged procedure gaps too: my `procedure.md` and evidence guide look for `comment.md` instead of `plan-comment.md`, the evidence guide still mentions the Path Review repo and has empty template sections, and nothing says what to do when no repro comment is posted.
-- What changed: I wrote the expected repro failure into the test plan, added the flat-curve trade-off and the real test name to the comment, added the missing caller to Risks, and re-graded to `accept`. The skill-file gaps are still to fix.
+- Tool: Claude Code with `CLAUDE.local.md` (for C++ curve/test implementation) plus `plan-check` re-run after re-scoping `#1067`.
+- What it produced: A 4-line `!isCurveUsed(idx)` guard in `radio/src/curves.cpp`, two regression tests (`Curves.UndefinedCurveIsIdentity` and `MixerTest.UndefinedCurveOnInputFollowsStick`) in `radio/src/tests/mixer.cpp`, and an `accept` verdict from `plan-check` after updating `plan.md`.
+- Difficulties: When `@gagarinlg` answered "Probably both" mid-build, my first commit message (`Fixes #1067`) overclaimed the issue and would have auto-closed it before the picker-filter half was addressed; I also had to isolate `repro_1067.cpp` outside the tracked tree so it would not leak into the diff.
+- What changed: Amended the commit and PR description to `"part of #1067"`, recorded both the scope split and the `TEST_F(MixerTest, ...)` fixture decision in `plan.md`'s Deviations section, moved `repro_1067.cpp` into git-ignored `build/evidence/`, and verified `git diff main...HEAD --stat` touched only `curves.cpp` and `mixer.cpp`.
 
 ---
 
@@ -230,20 +228,20 @@ I created `fix/1067-default-curves-linear` from `main` (I confirmed it matched `
 
 **PR Link:** <https://github.com/EdgeTX/edgetx/pull/8112>
 
-**PR Description:** Fixes #1067 by updating `applyCustomCurve()` in `radio/src/curves.cpp` so unconfigured custom curves default to linear `Y = X` passthrough instead of returning `Y = 0`, adds unit test coverage in `radio/src/tests/mixer.cpp`, includes before/after `gtests-radio` output, and discloses Claude Code assistance.
+**PR Description:** Addresses the `Y = X` firmware default half of `#1067` (`part of #1067`, leaving the `CurveChoice` picker filter for a separate change per `@gagarinlg`'s comment) by updating `applyCustomCurve()` in `radio/src/curves.cpp` so unconfigured custom curves return `x` instead of `0`, adds two regression unit tests in `radio/src/tests/mixer.cpp`, includes before/after `gtests-radio` output (`292/292` passing), and discloses Claude Code assistance.
 
 **Maintainer Feedback:**
 
-- 2026-11-22: none yet
+- 2026-11-23: none yet. The only comment is an automated MemBrowse memory report from `github-actions` (+8 to +104 B of flash per target), not a human review. `monitor.py` drafted a wait note, with the earliest nudge on 2026-11-30.
 
-**Status:** Awaiting review
+**Status:** Awaiting review (42 checks passing, mergeable, no review decision yet)
 
 **Toolkit**
 
 - Tool: `ship-gate` (`check_gate.py`, `ship-manifest.md`, and `pr-precheck` with `scope-live.md`) alongside `voice-guard`, run by hand with `check_gate.py --branch` and then through `claude "run this command: gh pr create ..."`.
-- What it produced: Confirmed all manifest checks passed, returned `pr-precheck` verdict `accept` and `ship-gate: PASS`, logged the fingerprints in `~/.claude/ship-gate/gate-log.md`, and let `gh pr create` open PR `#<NUM>` on `EdgeTX/edgetx`.
-- Difficulties: `<Write the real snag from your gate-log.md—e.g., fresh-shell path, rubric wording, or voice-guard catch—or "none met" if it passed cleanly.>`
-- What changed: `<Write the exact adjustment you made to ship-manifest.md, pr-precheck/rubric.md, or pr_draft.md—or "nothing".>`
+- What it produced: Confirmed all three manifest checks passed (`gtests-radio`, `check_radio_macros.py`, `check_includes.py`), returned `pr-precheck` verdict `accept` and `ship-gate: PASS`, logged the fingerprints in `~/.claude/ship-gate/gate-log.md`, and allowed `gh pr create` to open PR `#8112` on `EdgeTX/edgetx`.
+- Difficulties: My first manual `check_gate.py` run stopped on `standards-wall` because `@gagarinlg` had replied "Probably both" on `#1067` while my draft still said `Fixes #1067` and framed the picker filter as an either/or choice. Then my first `gh pr create` attempt stopped because I ran it from a Claude session started in my course folder instead of `~/Desktop/edgetx`.
+- What changed: Re-scoped the PR and amended the commit message to `"part of #1067"`, updated `plan.md`, re-ran `check_gate.py --branch` to `ship-gate: PASS`, and opened PR `#8112` from a fresh Claude session inside `~/Desktop/edgetx` so the hook honored the manual pass.
 
 ---
 
@@ -251,25 +249,22 @@ I created `fix/1067-default-curves-linear` from `main` (I confirmed it matched `
 
 ### Technical Skills Gained
 
-[What you learned technically, named concretely.]
+Working on `EdgeTX/edgetx#1067` pushed me well beyond Python into a real C++ embedded radio firmware codebase. I learned how EdgeTX's mixer pipeline evaluates custom curves (`applyCustomCurve()`, `intpol()`, and `isCurveUsed()` in `radio/src/curves.cpp`), how to write and run targeted GoogleTest regression tests (`TEST` and `TEST_F(MixerTest, ...)`) inside the `gtests-radio` native harness, and how to diagnose complex cross-toolchain build issues on macOS Intel (pip-installed CMake/Ninja, libc++ header wrappers, libclang codegen paths, and building SDL2 from source). On the workflow side, I learned how to pair deterministic local checks (`ship-manifest.md`, `git diff main...HEAD`) with rubric-driven AI gates (`repro-check`, `plan-check`, `pr-precheck`, `voice-guard`, and `pr-monitor`).
 
 ### Challenges Overcome
 
-[What was hard and how you solved it; point at the real events, the
-Toolkit blocks above are full of them.]
+Three real obstacles forced me to adapt rather than brute-force. First, getting `gtests-radio` to compile on macOS Intel took solving four stacked toolchain failures (broken Homebrew bottles, missing Command Line Tools C++ headers, Anaconda shadowing the venv Python, and missing SDL2). Second, my own `voice-guard` blocked my initial EdgeTX claim draft under my "Show what I tried" rule, forcing me to read `curves.cpp` before asking maintainers an informed either/or question—which directly paid off when `@gagarinlg` replied `"Probably both"`. Third, my first `ship-gate` run caught a real `standards-wall` mismatch between that maintainer reply and my `Fixes #1067` claim, pushing me to re-scope cleanly to `"part of #1067"` and verify the split with `plan-check` before opening PR `#8112`.
 
 ### What I'd Do Differently Next Time
 
-[Reflection on your process.]
+Next time, I will audit my skill files whenever I switch repositories—my Unit 1 `Technical Fit` rubric row stayed pinned to Python/ChromaDB and `plan-check`'s evidence guide still referenced Path Review's `comment.md` filename. I would also check a repository's local build requirements and CI workflow files *before* finalizing my issue choice so toolchain surprises like Qt 6 or SDL2 don't consume half my setup window, and I would always start my Claude Code session directly inside the target repo clone so hooks resolve the right working directory on the first try.
 
 ---
 
 ## Resources Used
 
-[What actually helped, not a reading list. List things this story
-already shows you using: the doc you followed to set the environment
-up, the thread that explained the bug, the person who answered you.
-One real entry beats ten plausible ones.]
-
-- [Link to documentation that helped]
-- [Discussion, issue, or post that helped]
+- [EdgeTX Issue #1067 — Make the default setting for curves Y = X instead of Y = 0](https://github.com/EdgeTX/edgetx/issues/1067) (issue context, prior discussion, and `@gagarinlg`'s `"Probably both"` design reply that shaped PR `#8112`'s scope)
+- [EdgeTX Pull Request #8112](https://github.com/EdgeTX/edgetx/pull/8112) (my submitted fix, test evidence, and PR thread monitored by `pr-monitor`)
+- [EdgeTX CI Test Script (`tools/commit-tests.sh`)](https://github.com/EdgeTX/edgetx/blob/main/tools/commit-tests.sh) and `.github/workflows/build_fw.yml` (source for the `TX16S` CMake flags, `gtests-radio` target, and `check_radio_macros.py` / `check_includes.py` checks in `ship-manifest.md`)
+- [EdgeTX Curve Implementation (`radio/src/curves.cpp`)](https://github.com/EdgeTX/edgetx/blob/main/radio/src/curves.cpp) and [Mixer Unit Tests (`radio/src/tests/mixer.cpp`)](https://github.com/EdgeTX/edgetx/blob/main/radio/src/tests/mixer.cpp) (traced `applyCustomCurve()`, `isCurveUsed()`, and `TEST(Curves, LinearIntpol)`)
+- [GitHub CLI (`gh`) Manual](https://cli.github.com/manual/) (used for `gh search issues`, `gh repo set-default`, `gh issue comment`, `gh pr create`, and `pr-monitor` state checks)
