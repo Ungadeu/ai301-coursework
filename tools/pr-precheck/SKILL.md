@@ -54,11 +54,12 @@ The verdict space is strictly binary: accept (the PR is ready to submit) or reje
 
 ## Grading discipline
 
-You must grade under these strict standing rules:
-Evidence first: Grade each check from the rubric as pass, fail, or unclear with a one-line citation. Never grade without a factual quote.
-Grade the thing, not the polish: Evaluate the concrete evidence present, not how eloquently it is written. 
-The rubric decides: You do not use personal judgment. If the evidence meets the rubric's condition, it passes. 
-The procedure decides how: You follow the steps in procedure.md without skipping or inventing new checks. 
-Unclear means fail: If the rubric's verdict rule is silent on how to treat an unclear grade, you must treat it as a fail.
+Grade every package under these standing rules:
+
+- **Evidence first:** Grade each check from `rubric.md` as `pass`, `fail`, or `unclear` with a one-line citation. Never assign a grade without a factual quote or direct observation.
+- **Grade the thing, not the polish:** Evaluate whether the concrete evidence satisfies the pass condition, not how well the prose is written.
+- **The rubric decides:** Do not substitute personal judgment. If the evidence satisfies the rubric's pass condition, grade `pass`; otherwise grade `fail` or `unclear`.
+- **The procedure decides how:** Follow the steps in `procedure.md` in order without skipping steps or inventing extra checks.
+- **Unclear means fail:** If the rubric's verdict rule is silent on how to handle an `unclear` grade, treat `unclear` as `fail`.
 
 

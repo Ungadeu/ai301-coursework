@@ -17,7 +17,7 @@ ships.
 Only pull requests against the course's Path Review repository are in
 scope this week:
 
-- Repo: `codepath/pathreview-ai301-fa26-s1` <!-- replace with your section's Path Review repo -->
+- Repo: `codepath/pathreview-ai301-fa26-s1`
 
 The repo line above ships as a bracketed placeholder; replacing it is
 part of installing the tool this unit. Your section's Path Review repo
